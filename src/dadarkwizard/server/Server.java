@@ -1,7 +1,7 @@
 package dadarkwizard.server;
 
-import dadarkwizard.server.exceptions.BadConfigurationException;
-import dadarkwizard.server.messages.Message;
+import dadarkwizard.exceptions.BadConfigurationException;
+import dadarkwizard.messages.Message;
 
 import java.io.IOException;
 import java.net.InetAddress;

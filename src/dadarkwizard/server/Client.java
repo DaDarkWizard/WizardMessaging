@@ -1,8 +1,8 @@
 package dadarkwizard.server;
 
-import dadarkwizard.server.messages.Message;
-import dadarkwizard.server.messages.MessageType;
-import dadarkwizard.server.messages.encoding.Encoder;
+import dadarkwizard.messages.Message;
+import dadarkwizard.messages.MessageType;
+import dadarkwizard.messages.encoding.Encoder;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
