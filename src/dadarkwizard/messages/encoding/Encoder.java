@@ -3,6 +3,7 @@ package dadarkwizard.messages.encoding;
 import java.nio.ByteBuffer;
 
 public class Encoder {
+
     private ByteBuffer buffer;
 
     public Encoder(byte[] bytes) {

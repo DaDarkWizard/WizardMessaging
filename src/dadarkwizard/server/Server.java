@@ -64,4 +64,14 @@ public class Server implements Runnable {
     public BlockingQueue<Message> getMessages() {
         return input;
     }
+
+    public void sendMessage(int id, Message message) {
+        threadAcceptor.getClients().get(id).sendMessage(message);
+    }
+
+    public void sendEveryoneMessage(Message message) {
+        for (var client : threadAcceptor.getClients().values()) {
+            client.sendMessage(message);
+        }
+    }
 }

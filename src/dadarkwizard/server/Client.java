@@ -1,10 +1,12 @@
 package dadarkwizard.server;
 
+import dadarkwizard.messages.FatalErrorMessage;
 import dadarkwizard.messages.Message;
 import dadarkwizard.messages.MessageType;
 import dadarkwizard.messages.encoding.Encoder;
 
 import java.io.IOException;
+import java.lang.management.MemoryUsage;
 import java.lang.reflect.InvocationTargetException;
 import java.net.Socket;
 import java.util.PriorityQueue;
@@ -12,7 +14,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 
-public class Client implements Runnable {
+class Client implements Runnable {
 
     //region variables
 
@@ -73,7 +75,7 @@ public class Client implements Runnable {
 
                 if (receivingMessage && socket.getInputStream().available() >= nextMessageLength - 5) {
                     byte[] bytes = new byte[nextMessageLength - 5];
-                    if (socket.getInputStream().read(bytes) < bytes.length) {
+                    if (socket.getInputStream().read(bytes) != bytes.length) {
                         throw new IOException();
                     }
 
@@ -85,13 +87,14 @@ public class Client implements Runnable {
                     while (!received) {
                         received = input.offer(message);
                     }
+                    receivingMessage = false;
                 }
 
                 //endregion
 
                 //region send
 
-                if (output.peek() == null) {
+                if (output.peek() != null) {
                     try {
                         Message message = output.take();
                         socket.getOutputStream().write(message.getBytes());

@@ -2,7 +2,7 @@ package dadarkwizard.messages.encoding;
 
 import java.nio.ByteBuffer;
 
-public class ByteString {
+class ByteString {
     private byte[] bytes;
     private String string;
 

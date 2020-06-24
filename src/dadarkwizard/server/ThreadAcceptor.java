@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 
-public class ThreadAcceptor implements Runnable {
+class ThreadAcceptor implements Runnable {
 
     private ServerSocket serverSocket;
     private boolean exit = false;
@@ -26,6 +26,7 @@ public class ThreadAcceptor implements Runnable {
             try {
                 Socket socket = serverSocket.accept();
                 Client client = new Client(socket);
+                client.start();
                 clients.put(client.getId(), client);
             } catch (IOException e) {
                 e.printStackTrace();

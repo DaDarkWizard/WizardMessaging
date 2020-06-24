@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class ReadInput implements Runnable {
+class ReadInput implements Runnable {
 
     private BlockingQueue<Message> input = new LinkedBlockingQueue<>();
     private InputStream stream;
