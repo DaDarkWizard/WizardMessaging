@@ -13,7 +13,7 @@ public class FatalErrorMessage extends Message {
 
     public FatalErrorMessage(String error) {
         id = 0x02;
-        bytes = new byte[error.length() + 7];
+        bytes = new byte[2 * error.length() + 7];
         var encoder = new Encoder(bytes);
         encoder.putInt(bytes.length);
         encoder.put((byte) id);
@@ -60,7 +60,7 @@ public class FatalErrorMessage extends Message {
     public void setError(String error) {
         this.error = error;
         ByteString errorString = new ByteString(error);
-        bytes = new byte[error.length() + 7];
+        bytes = new byte[2 * error.length() + 7];
 
         var encoder = new Encoder(bytes);
         encoder.putInt(bytes.length);
